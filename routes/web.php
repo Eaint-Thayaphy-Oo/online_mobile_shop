@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
         // })->name('user#home');
         Route::get('/homePage', [UserController::class, 'home'])->name('user#home');
     });
+    // Route::get('/homePage', [UserController::class, 'home'])->name('user#home');
 });
 
 Route::redirect('/', 'loginPage');
