@@ -29,15 +29,17 @@ Route::middleware('auth')->group(function () {
 
     //user
     //home
+    // Route::group(['prefix' => 'user', 'middleware' => 'user_auth'], function () {
+    //     Route::get('/homePage', [UserController::class, 'home'])->name('user#home');
+    // });
     Route::group(['prefix' => 'user', 'middleware' => 'user_auth'], function () {
-        // Route::get('home', function () {
-        //     return view('user.home');
-        // })->name('user#home');
         Route::get('/homePage', [UserController::class, 'home'])->name('user#home');
     });
-    // Route::get('/homePage', [UserController::class, 'home'])->name('user#home');
 });
 
-Route::redirect('/', 'loginPage');
-Route::get('loginPage', [AuthController::class, 'loginPage'])->name('auth#loginPage');
-Route::get('registerPage', [AuthController::class, 'registerPage'])->name('auth#registerPage');
+//login,register
+Route::middleware(['admin_auth'])->group(function () {
+    Route::redirect('/', 'loginPage');
+    Route::get('loginPage', [AuthController::class, 'loginPage'])->name('auth#loginPage');
+    Route::get('registerPage', [AuthController::class, 'registerPage'])->name('auth#registerPage');
+});

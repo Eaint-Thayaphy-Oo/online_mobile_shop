@@ -55,7 +55,7 @@
                                     <label class="float-label">Password</label>
                                 </div>
                                 <div class="form-group form-primary">
-                                    <input type="text" name="confirmPassword" class="form-control" required="">
+                                    <input type="text" name="password_confirmation" class="form-control" required="">
                                     <span class="form-bar"></span>
                                     <label class="float-label">Confirm Password</label>
                                 </div>
