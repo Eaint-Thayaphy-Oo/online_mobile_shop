@@ -32,14 +32,15 @@ Route::middleware('auth')->group(function () {
     // Route::group(['prefix' => 'user', 'middleware' => 'user_auth'], function () {
     //     Route::get('/homePage', [UserController::class, 'home'])->name('user#home');
     // });
-    Route::group(['prefix' => 'user', 'middleware' => 'user_auth'], function () {
-        Route::get('/homePage', [UserController::class, 'home'])->name('user#home');
-    });
+    Route::get('/homePage', [UserController::class, 'home'])->name('user#home');
 });
 
 //login,register
-Route::middleware(['admin_auth'])->group(function () {
-    Route::redirect('/', 'loginPage');
-    Route::get('loginPage', [AuthController::class, 'loginPage'])->name('auth#loginPage');
-    Route::get('registerPage', [AuthController::class, 'registerPage'])->name('auth#registerPage');
-});
+// Route::middleware(['admin_auth'])->group(function () {
+//     Route::redirect('/', 'loginPage');
+//     Route::get('loginPage', [AuthController::class, 'loginPage'])->name('auth#loginPage');
+//     Route::get('registerPage', [AuthController::class, 'registerPage'])->name('auth#registerPage');
+// });
+Route::redirect('/', 'loginPage');
+Route::get('loginPage', [AuthController::class, 'loginPage'])->name('auth#loginPage');
+Route::get('registerPage', [AuthController::class, 'registerPage'])->name('auth#registerPage');
